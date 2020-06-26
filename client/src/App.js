@@ -1,5 +1,9 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import HomeScreen from './Screens/HomeScreen';
+import ProductScreen from './Screens/ProductScreen';
+
 
 function App() {
 
@@ -11,55 +15,45 @@ function App() {
   }
 
   return (
-    <div className="grid-container">
-      <header className="header">
-        <div className="brand">
-          <button onClick={openMenu}>
-            &#9776;
+    <BrowserRouter>
+      <div className="grid-container">
+        <header className="header">
+          <div className="brand">
+            <button onClick={openMenu}>
+              &#9776;
       </button>
-          <a href="index.html">Brite-U</a>
-        </div>
-        <div className="header-links">
-          <a href="cart.html">Cart</a>
-          <a href="signin.html">Sign In</a>
-        </div>
-      </header>
-      <aside className="sidebar">
-        <h3>Shopping Categories</h3>
-        <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-        <ul>
-          <li>
-            <a href="index.html">Scooters</a>
-          </li>
-          <li>
-            <a href="index.html">Cycles</a>
-          </li>
-        </ul>
-      </aside>
-      <main className="main">
-        <div className="content">
-          <ul className="products">
+            <Link to="/">Brite-U</Link>
+          </div>
+          <div className="header-links">
+            <a href="cart.html">Basket</a>
+            <a href="signin.html">Sign In</a>
+          </div>
+        </header>
+        <aside className="sidebar">
+          <h3>Shopping Categories</h3>
+          <button className="sidebar-close-button" onClick={closeMenu}>x</button>
+          <ul>
             <li>
-              <div className="product">
-                <img className="product-image" src="https://i1.adis.ws/i/washford/843190/Xiaomi-Mi-M365-Electric-Scooter---Black.webp?$sfcc_tile$&w=680" alt="product" />
-                <div className="product-name">
-                  <a href="product.html">scooter</a>
-                </div>
-                <div className="product-brand">Brite-U</div>
-                <div className="product-price">£400</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
+              <a href="index.html">Scooters</a>
+            </li>
+            <li>
+              <a href="index.html">Cycles</a>
             </li>
           </ul>
+        </aside>
+        <main className="main">
+          <div className="content">
+            <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/" exact={true} component={HomeScreen} />
+          </div>
 
-        </div>
+        </main>
 
-      </main>
-
-      <footer className="footer">
-        All right reserved.
+        <footer className="footer">
+          All right reserved.
       </footer>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
