@@ -1,45 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './HomeScreen.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { listProducts } from '../actions/productActions';
 
 function HomeScreen(props) {
 
-  const [products, setProduct] = useState([]);
-  const BASE_URL = "http://localhost:3001";
+  const productList = useSelector(state => state.productList);
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(BASE_URL + "/api/products");
-      console.log("aaaa", data)
-      setProduct(data)
-
-    }
-    fetchData();
+    dispatch(listProducts());
+    // eslint-disable-next-line
   }, [])
 
   return (
-    <ul className="products">
-      {
-        products.map(product =>
-          <li>
-            <div className="product">
+    loading ? <div>Loading...</div> :
+      error ? <div>{error}</div> :
+        <ul className="products">
+          {
+            products.map(product =>
+              <li>
+                <div className="product">
 
-              <div className="product-name">
-                <Link to={'/product/' + product._id}>
-                  <img className="product-image" src={product.image} alt="product" />
-                  {product.name}
-                </Link>
-              </div>
-              <div className="product-brand">{product.brand}</div>
-              <div className="product-price">{product.price}</div>
-              <div className="product-rating">{product.rating} Stars ({product.numReviews})</div>
-            </div>
-          </li>
+                  <div className="product-name">
+                    <Link to={'/product/' + product._id}>
+                      <img className="product-image" src={product.image} alt="product" />
+                      {product.name}
+                    </Link>
+                  </div>
+                  <div className="product-price">£{product.price}</div>
+                  {product.countInStock > 0 ? <div className="inStock">In stock</div> : <div className="outOfStock">Out of stock</div>}
+                  <div className="product-rating">{product.rating} Stars ({product.numReviews})</div>
+                </div>
+              </li>
 
-        )
-      }
-    </ul>
+            )
+          }
+        </ul>
   )
 }
 

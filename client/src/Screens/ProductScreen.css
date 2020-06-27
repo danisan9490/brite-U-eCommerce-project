@@ -23,6 +23,10 @@
 
 .details-action {
   flex: 1 1 30rem;
+  /* border: 5rem black; */
+  border-radius: 0.5rem;
+  background-color: rgb(236, 255, 211);
+  padding: 1rem;
 }
 
 .details-info ul, .details-action ul {
@@ -34,20 +38,23 @@
   margin-bottom: 1rem;
 }
 
+.details-action ul li:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
 .back-to-result {
   padding: 1rem;
 }
 
-.details-action {
-  border: .1rem grey;
-  border-radius: 0.5rem;
-  background-color: white;
-  padding: 1rem;
+.inStock {
+  color: green;
+  font-weight: bold;
 }
 
-.details-action ul li:last-child {
-  display: flex;
-  flex-direction: column;
+.outOfStock {
+  color: red;
+  font-weight: bold;
 }
 
 .button {
@@ -56,6 +63,14 @@
   border-radius: 0.8rem;
   cursor: pointer;
   background-color: orange;
+}
+
+.button-outOfStock {
+  padding: 1rem;
+  border: .1rem grey solid;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  background-color: grey;
 }
 
 .button:hover {
