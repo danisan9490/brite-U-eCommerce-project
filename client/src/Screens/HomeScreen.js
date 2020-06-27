@@ -1,13 +1,27 @@
-import React from 'react';
-import data from '../data';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './HomeScreen.css';
 
 function HomeScreen(props) {
+
+  const [products, setProduct] = useState([]);
+  const BASE_URL = "http://localhost:3001";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(BASE_URL + "/api/products");
+      console.log("aaaa", data)
+      setProduct(data)
+
+    }
+    fetchData();
+  }, [])
+
   return (
     <ul className="products">
       {
-        data.products.map(product =>
+        products.map(product =>
           <li>
             <div className="product">
 
