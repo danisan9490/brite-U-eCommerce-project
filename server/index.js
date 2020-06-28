@@ -1,4 +1,5 @@
 const express = require('express');
+const userRoute = require('./routes/userRoutes');
 const cors = require('cors');
 
 const data = require('./data');
@@ -7,7 +8,7 @@ const app = express();
 const PORT = 3001;
 
 app.use(cors());
-
+app.use("/api/users", userRoute);
 
 app.get("/api/products/:id", (req, res) => {
   const productId = req.params.id;
