@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './ProductScreen.css';
-import { detailsProduct } from '../actions/productActions';
+import { detailsProduct } from '../../actions/productActions';
 
 function ProductScreen(props) {
 

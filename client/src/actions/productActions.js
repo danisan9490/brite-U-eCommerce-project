@@ -1,9 +1,14 @@
+import { BASE_URL } from '../constants/base-url';
 import {
-  PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS,
-  PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
-} from "../reducers/productReducers"
+  PRODUCT_LIST_REQUEST,
+  PRODUCT_LIST_SUCCESS,
+  PRODUCT_LIST_FAIL,
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL
+} from "../constants/productConstants";
+
 import axios from 'axios';
-const BASE_URL = "http://localhost:3001";
 
 const listProducts = () => async (dispatch) => {
   try {
