@@ -82,7 +82,7 @@ function CartScreen(props) {
     </div>
     <div className="cart-action">
       <h3>
-        Subtotal ( {console.log(cartItems), cartItems.reduce((a, c) => a + c.qty * 1, 0)} items)
+        Subtotal ( {cartItems.reduce((a, c) => a + c.qty * 1, 0)} items)
         :
          £ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>
