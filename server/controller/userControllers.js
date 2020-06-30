@@ -5,7 +5,7 @@ async function createAdmin(req, res) {
   try {
     const user = new User({
       name: 'User',
-      email: 'userAdmin@gmail.com',
+      email: 'Admin@gmail.com',
       password: '1234',
       isAdmin: true
     });

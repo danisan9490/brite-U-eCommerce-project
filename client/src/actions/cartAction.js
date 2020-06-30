@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Cookie from "js-cookie";
-import { BASE_URL } from '../constants/base-url'
+import { BASE_URL } from '../constants/base-url';
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 const addToCart = (productId, qty) => async (dispatch, getState) => {
