@@ -7,6 +7,15 @@ async function getProducts(req, res) {
   res.send(products);
 }
 
+async function getProductsCheckOut(req, res) {
+  const product = await Product.findOne({ _id: req.params.id });
+  if (product) {
+    res.send(product);
+  } else {
+    res.status(404).send({ message: "Product Not Found." });
+  }
+}
+
 async function postProduct(req, res) {
   const product = new Product({
     name: req.body.name,
@@ -61,4 +70,5 @@ module.exports = {
   postProduct,
   deleteProduct,
   editProduct,
+  getProductsCheckOut,
 }

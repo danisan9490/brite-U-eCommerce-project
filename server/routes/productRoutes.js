@@ -5,7 +5,8 @@ const isAuth = require('../util');
 
 
 router.get("/", controller.getProducts);
-router.post("/", isAuth, isAdmin, controller.postProduct,);
+router.get("/:id", controller.getProductsCheckOut)
+router.post("/", isAuth, isAdmin, controller.postProduct);
 router.delete("/:id", isAuth, isAdmin, controller.deleteProduct);
 router.put("/:id", isAuth, isAdmin, controller.editProduct);
 

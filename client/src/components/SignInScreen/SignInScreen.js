@@ -11,10 +11,11 @@ function SignInScreen(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { loading, userInfo, error } = userSignin;
   const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
 
   useEffect(() => {
     if (userInfo) {
-      props.history.push("/");
+      props.history.push(redirect);
     }
   }, [userInfo]);
 
@@ -52,7 +53,7 @@ function SignInScreen(props) {
           New to Brite-U?
         </li>
         <li>
-          <Link to="/register" className="button secondary text-center" >Create your Brite-U account</Link>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
         </li>
       </ul>
     </form>
