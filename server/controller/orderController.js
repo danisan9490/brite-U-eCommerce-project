@@ -11,6 +11,13 @@ async function getOrder(req, res) {
   }
 }
 
+async function getMine(req, res) {
+  const orders = await Order.find({ user: req.user._id });
+  res.send(orders);
+}
+
+
+
 
 async function postOrder(req, res) {
   const newOrder = new Order({
@@ -52,5 +59,6 @@ async function putOrderPay(req, res) {
 module.exports = {
   getOrder,
   postOrder,
-  putOrderPay
+  putOrderPay,
+  getMine
 }
